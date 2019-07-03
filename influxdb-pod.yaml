@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: influxdb-pod
+ labels:
+  app: db
+spec:
+ volumes:
+ - name: influxdb
+   emptyDir: {}
+ containers:
+ - name: influxdb
+   image: influxdb:latest
+   ports:
+   - containerPort: 8086
+ nodeSelector:
+   disktype: ssd
